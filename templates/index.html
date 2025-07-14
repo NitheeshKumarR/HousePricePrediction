@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <section class="section-1">
+        <h1>Chennai House Price Prediction</h1>
+        <h2>Using RandomForest Regressor</h2>
+        <h3>Enter your house features</h3>
+        <div class="form-container">
+            <form action="/predict" method="POST" id="multiStepForm">
+
+                <div class="step active">
+                    <label for="AREA">AREA:</label>
+                    <select name="AREA" id="AREA" required>
+                    <option value="" disabled selected>Select the area closer to you</option>
+                    <option value="16.098978">Chrompet</option>
+                    <option value="16.333628">KK Nagar</option>
+                    <option value="16.541150">T Nagar</option>
+                    <option value="15.755791">Karapakkam</option>
+                    <option value="16.510994">Anna Nagar</option>
+                    <option value="15.999864">Adyar</option>
+                    <option value="16.187586">Velachery</option>
+                    </select>
+                </div>
+
+                
+                <div class="step">
+                    <label for="INT_SQFT">Interior Square Feet:</label>
+                    <input type="text" id="INT_SQFT" name="INT_SQFT" required>
+                </div>
+
+
+                <div class="step">
+                    <label for="DIST_MAINROAD">Distance to Main Road:</label>
+                    <select name="DIST_MAINROAD" id="DIST_MAINROAD" required>
+                    <option value="" disabled selected>Select the distance of your house from the mainroad</option>
+                    <option value="16.148049">Near</option>
+                    <option value="16.128672">Medium</option>
+                    <option value="16.152540">Far</option>
+                    <option value="16.153671">Very Far</option>
+                    </select>
+                </div>
+
+
+                <div class="step">
+                    <label for="N_BEDROOM">Number of Bedrooms:</label>
+                    <input type="text" id="N_BEDROOM" name="N_BEDROOM" required>
+                </div>
+
+
+                <div class="step">
+                    <label for="N_BATHROOM">Number of Bathrooms:</label>
+                    <input type="text" id="N_BATHROOM" name="N_BATHROOM" required>
+                </div>
+
+
+                <div class="step">
+                    <label for="N_ROOM">Total Number of Rooms:</label>
+                    <input type="text" id="N_ROOM" name="N_ROOM" required>
+                </div>
+
+
+                <div class="step">
+                    <label for="SALE_COND">Sale Condition:</label>
+                    <select name="SALE_COND" id="SALE_COND" required>
+                    <option value="" disabled selected>Select the sale condition</option>
+                    <option value="16.121952">partial</option>
+                    <option value="16.124209">family</option>
+                    <option value="16.177523">adjland</option>
+                    <option value="16.152687">normal sale</option>
+                    <option value="16.150574">abnormal</option>
+                    </select>
+                </div>
+
+
+                <div class="step">
+                    <label for="PARK_FACIL">Parking Facility:</label>
+                    <select name="PARK_FACIL" id="PARK_FACIL" required>
+                    <option value="" disabled selected>Select whether park facility available or not</option>
+                    <option value="16.200158">Yes</option>
+                    <option value="16.089923">No</option>
+                    </select>
+                </div>
+
+
+                <div class="step">
+                    <label for="BUILDTYPE">Building Type:</label>
+                    <select name="BUILDTYPE" id="BUILDTYPE" required>
+                    <option value="" disabled selected>Select the build type</option>
+                    <option value="16.404912">Commercial</option>
+                    <option value="16.058960">Others</option>
+                    <option value="15.979897">House</option>
+                    </select>
+                </div>
+
+
+                <div class="step">
+                    <label for="UTILITY_AVAIL">Utility Availability:</label>
+                    <select name="UTILITY_AVAIL" id="UTILITY_AVAIL" required>
+                    <option value="" disabled selected>Select the utility available</option>
+                    <option value="16.096682">ELO</option>
+                    <option value="16.149560">NoSeWa</option>
+                    <option value="16.175569">All Pub</option>
+                    </select>
+                </div>
+
+
+                <div class="step">
+                    <label for="STREET">Street:</label>
+                    <select name="STREET" id="STREET" required>
+                    <option value="" disabled selected>Select the street type</option>
+                    <option value="16.165423">Paved</option>
+                    <option value="16.201323">Gravel</option>
+                    <option value="16.051234">No Access</option>
+                    </select>
+                </div>
+
+
+                <div class="step">
+                    <label for="MZZONE">Zone:</label>
+                    <select name="MZZONE" id="MZZONE" required>
+                    <option value="" disabled selected>Select your municipal zone</option>
+                    <option value="15.741124">A</option>
+                    <option value="16.171920">RH</option>
+                    <option value="16.240733">RL</option>
+                    <option value="15.927076">I</option>
+                    <option value="15.838861">C</option>
+                    <option value="16.297364">RM</option>
+                    </select>
+                </div>
+
+
+                <div class="step">
+                    <label for="house_age">House Age:</label>
+                    <select name="house_age" id="house_age" required>
+                    <option value="" disabled selected>Select the house age</option>
+                    <option value="16.193761">0-10</option>
+                    <option value="16.173404">11-20</option>
+                    <option value="16.158552">21-30</option>
+                    <option value="16.098222">31-40</option>
+                    <option value="16.039621">40+</option>
+                    </select>
+                </div>
+
+                <div class="navigation">
+                    <div class="step-indicator" id="stepIndicator">Step 1 of 5</div>
+                    <button type="button" id="nextBtn">Next</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+
+</body>
+</html>
